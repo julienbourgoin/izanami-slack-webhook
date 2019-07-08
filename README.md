@@ -1,4 +1,10 @@
-# Build
+# Purpose
+This project aim to expose a webhook dedicated to catch Izanami events and send slack notifications to log differents occuring events
+
+# Running from sources
+This project is based on [adnanh/webhook](https://github.com/adnanh/webhook/) project, which allow to define webhooks with a simple `hooks.json` file
+
+# Build docker
 
 ```shell
 docker build -t maif/izanami-slack-webhook .
