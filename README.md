@@ -4,6 +4,14 @@ This project aim to expose a webhook dedicated to catch Izanami events and send 
 # Running from sources
 This project is based on [adnanh/webhook](https://github.com/adnanh/webhook/) project, which allow to define webhooks with a simple `hooks.json` file
 
+You will then first need the webhook binary and launch the following command :
+
+```shell
+./webhook -hooks hooks.json -verbose
+```
+
+> Edit the hooks.json file to give the right path to the `izanami-webhook.sh` script
+
 # Build docker
 
 ```shell
