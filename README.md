@@ -38,6 +38,6 @@ All the matching pattern events will trigger a call to the webhook url
 
 # Environnement variiables
 
-* `SLACK_SERVICE_IDENTIFIER` : The slack hook identifier
+* `SLACK_SERVICE_IDENTIFIER` : The slack hook identifier you can find at the end of these urls : https://hooks.slack.com/services/$SLACK_SERVICE_IDENTIFIER (this is personnel to your slack account)
 
 
