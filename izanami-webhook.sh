@@ -14,7 +14,8 @@ _processFeatureObject()
 	type=$(echo $object  | jq -r '.type')
 	key=$(echo $object | jq -r '.key')
     enabled=$(echo $object | jq -r '.payload.enabled')
-    post_to_slack "$type : $key $enabled"
+	name=$(echo $object | jq -r '.authInfo.name')
+    post_to_slack "$type by $name : $key $enabled"
 }
 
 _processConfigObject()
