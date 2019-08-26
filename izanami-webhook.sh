@@ -1,18 +1,18 @@
 #!/bin/bash
 
 function post_to_slack () {
-  # format message as a code block ```${msg}```
-  SLACK_MESSAGE="\`\`\`$1\`\`\`"
-  SLACK_URL=https://hooks.slack.com/services/$SLACK_SERVICE_IDENTIFIER
-  SLACK_ICON=':izanami:'
-  curl -s -X POST --data "payload={\"username\": \"Izanami\", \"icon_emoji\": \"${SLACK_ICON}\", \"text\": \"${SLACK_MESSAGE}\"}" ${SLACK_URL}
+    # format message as a code block ```${msg}```
+    SLACK_MESSAGE="\`\`\`$1\`\`\`"
+    SLACK_URL=https://hooks.slack.com/services/$SLACK_SERVICE_IDENTIFIER
+    SLACK_ICON=':izanami:'
+    curl -s -X POST --data "payload={\"username\": \"Izanami\", \"icon_emoji\": \"${SLACK_ICON}\", \"text\": \"${SLACK_MESSAGE}\"}" ${SLACK_URL}
 }
 
 _processFeatureObject()
 {
     object=$(echo $1  | base64 --decode)
-	type=$(echo $object  | jq -r '.type')
-	key=$(echo $object | jq -r '.key')
+    type=$(echo $object  | jq -r '.type')
+    key=$(echo $object | jq -r '.key')
     enabled=$(echo $object | jq -r '.payload.enabled')
 	name=$(echo $object | jq -r '.authInfo.name')
     post_to_slack "$type by $name : $key $enabled"
@@ -20,15 +20,15 @@ _processFeatureObject()
 
 _processConfigObject()
 {
-	object=$(echo $1  | base64 --decode)
+    object=$(echo $1 | base64 --decode)
     echo 'Config object'
 }
 
 _processEditedObject()
 {
-	object=$(echo $1  | base64 --decode)
-	domain=$(echo $object | jq -r '.domain')
-	echo $domain
+    object=$(echo $1  | base64 --decode)
+    domain=$(echo $object | jq -r '.domain')
+    echo $domain
 
     case "$domain" in
         "Feature")
@@ -38,7 +38,7 @@ _processEditedObject()
         "Config")
             _processConfigObject $1
             ;;
-		*)
+        *)
             echo "Objet non reconnu : $domain"
     esac
 }
